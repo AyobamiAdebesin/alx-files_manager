@@ -4,16 +4,15 @@ import { redisClient } from '../utils/redis';
 class AppController {
   static getStatus(req, res) {
     if (dbClient.isAlive() && redisClient.isAlive()) {
-      return res.status(200).send({ redis: true, db: true });
+      res.status(200).json({ redis: true, db: true });
     }
-    return res.send({ error: 404 });
   }
 
-  static getStats(req, res) {
-    const nUsers = dbClient.nbUsers();
-    const nFiles = dbClient.nbUsers();
+  static async getStats(req, res) {
+    const nUsers = await dbClient.nbUsers();
+    const nFiles = await dbClient.nbUsers();
 
-    return res.status(200).send({ users: nUsers, files: nFiles });
+    res.status(200).json({ users: nUsers, files: nFiles });
   }
 }
 module.exports = AppController;
