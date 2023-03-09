@@ -25,9 +25,9 @@ class RedisClient {
   }
 
   async del(key) {
-    await this.client.internal_send_command(['DEL', key]);
+    await this.client.sendCommand(['DEL', key]);
   }
 }
 
-const redisClient = RedisClient();
+const redisClient = new RedisClient();
 module.exports = redisClient;
