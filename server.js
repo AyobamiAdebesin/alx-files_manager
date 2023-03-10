@@ -1,3 +1,6 @@
+/**
+ * The entry point of the web application.
+ */
 const express = require('express');
 
 const router = require('./routes/index');
