@@ -1,1 +1,1 @@
-A simple platform to upload and view files
+A simple API to upload and view files
